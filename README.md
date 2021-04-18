@@ -51,7 +51,7 @@ roles:
   - git
 ```
 
-### Configure user ~/.gitconfig and ~/.gitignore
+### Configure user ~/.config/git/config and ~/.config/git/ignore
 
 Default `git_user` set to `ansible_user_id`:
 
