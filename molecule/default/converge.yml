@@ -1,0 +1,44 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    git_user: molecule
+    gitconfig_alias:
+      b: branch
+      co: checkout
+      c: commit
+      cm: "commit -m" # commit message
+      d: diff
+      r: reset
+      remote-url: '!echo "ssh://$(stat -c "%U" "$PWD")@$(basename "$PWD")$PWD"' # output url for clone current repo
+      rf: "checkout --" # reset file
+      s: status
+    gitconfig_color:
+      ui: auto
+    gitconfig_core:
+      autocrlf: input
+      excludesfile: "{{ gitignore_path }}"
+    gitconfig_diff:
+    gitconfig_user:
+      name: testuser
+      email: testuser@email.com
+    gitconfig_other:
+      github:
+        user: testuser2
+        email: testuser2@email.com
+    gitignore:
+      - ".idea"
+      - ".vagrant"
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=true cache_valid_time=600
+
+    - name: create test user
+      user:
+        name: molecule
+
+  tasks:
+    - name: "Include ansible-role-git"
+      include_role:
+        name: "ansible-role-git"

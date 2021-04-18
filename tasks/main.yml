@@ -1,0 +1,43 @@
+---
+- name: install git packages
+  package:
+    name: "{{ git_packages }}"
+    state: present
+
+- name: ensure git config directory exists
+  file:
+    path: "{{ git_path }}"
+    owner: "{{ git_user }}"
+    group: "{{ git_user }}"
+    recurse: true
+    state: directory
+
+- name: configure /etc/gitconfig
+  template:
+    src: gitconfig.j2
+    dest: "/etc/gitconfig"
+  when: git_user == 'system' and gitconfig_set
+
+- name: configure user gitconfig
+  template:
+    src: gitconfig.j2
+    dest: "{{ gitconfig_path }}"
+    owner: "{{ git_user }}"
+    group: "{{ git_user }}"
+  when: git_user != 'system' and gitconfig_set
+
+- name: configure user gitignore
+  template:
+    src: gitignore.j2
+    dest: "{{ gitignore_path }}"
+    owner: "{{ git_user }}"
+    group: "{{ git_user }}"
+  when: git_user != 'system' and gitignore_set
+
+- name: configure user gitmessage
+  template:
+    src: gitmessage.j2
+    dest: "{{ gitconfig_commit_message_path }}"
+    owner: "{{ git_user }}"
+    group: "{{ git_user }}"
+  when: git_user != 'system' and gitconfig_set_commit_message

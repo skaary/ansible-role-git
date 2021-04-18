@@ -1,0 +1,31 @@
+---
+git_user: "{{ ansible_user_id }}" # or 'system'
+
+git_packages:
+  - git
+
+gitconfig_set: true
+gitignore_set: true
+gitconfig_set_commit_message: true
+
+git_path: "/home/{{ git_user }}/.config/git"
+gitconfig_path: "{{ git_path }}/config"
+gitignore_path: "{{ git_path }}/ignore"
+gitconfig_commit_message_path: "{{ git_path }}/message"
+
+gitconfig_alias:
+
+gitconfig_color:
+
+gitconfig_core:
+
+gitconfig_diff:
+
+gitconfig_user:
+
+gitconfig_commit:
+  template: "{{ gitconfig_commit_message_path }}"
+
+gitconfig_other:
+
+gitignore:

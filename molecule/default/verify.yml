@@ -1,0 +1,15 @@
+---
+- name: Verify
+  hosts: all
+
+  tasks:
+    - name: Collect package facts.
+      package_facts:
+        manager: "auto"
+
+    - name: Verify Git is installed.
+      assert:
+        that:
+          - "'git' in ansible_facts.packages"
+        success_msg: "Git is installed."
+        fail_msg: "Git is not installed."

@@ -1,0 +1,50 @@
+{% if gitconfig_alias is defined and gitconfig_alias %}
+[alias]
+{% for k,v in gitconfig_alias.items() %}
+    {{ k }} = {{ v }}
+{% endfor %}
+{% endif %}
+
+{% if gitconfig_color is defined and gitconfig_color %}
+[color]
+{% for k,v in gitconfig_color.items() %}
+    {{ k }} = {{ v }}
+{% endfor %}
+{% endif %}
+
+{% if gitconfig_core is defined and gitconfig_core %}
+[core]
+{% for k,v in gitconfig_core.items() %}
+    {{ k }} = {{ v }}
+{% endfor %}
+{% endif %}
+
+{% if gitconfig_diff is defined and gitconfig_diff %}
+[diff]
+{% for k,v in gitconfig_diff.items() %}
+    {{ k }} = {{ v }}
+{% endfor %}
+{% endif %}
+
+{% if gitconfig_user is defined and gitconfig_user %}
+[user]
+{% for k,v in gitconfig_user.items() %}
+    {{ k }} = {{ v }}
+{% endfor %}
+{% endif %}
+
+{% if gitconfig_commit is defined and gitconfig_commit %}
+[commit]
+{% for k,v in gitconfig_commit.items() %}
+    {{ k }} = {{ v }}
+{% endfor %}
+{% endif %}
+
+{% if gitconfig_other is defined and gitconfig_other %}
+{% for section,values in gitconfig_other.items() %}
+[{{ section }}]
+{% for k,v in values.items() %}
+    {{ k }} = {{ v }}
+{% endfor %}
+{% endfor %}
+{% endif %}

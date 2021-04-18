@@ -1,0 +1,8 @@
+skip_list:
+  - 'yaml'
+  - 'risky-shell-pipe'
+  - 'role-name'
+  - 'git-latest'
+  - 'no-changed-when'
+  - 'meta-no-info'
+  - 'literal-compare'

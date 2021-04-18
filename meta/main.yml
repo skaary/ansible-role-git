@@ -1,0 +1,6 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: git
+  description: Installation of git and .gitconfig for linux.
