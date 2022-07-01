@@ -9,6 +9,28 @@ Gitconfig can be configured either system-wide (`/etc/gitconfig`) or per user (`
 
 None
 
+## Dependencies
+
+None
+
+## Installation
+
+Download the role directly from git by typing into your terminal:
+
+```bash
+ansible-galaxy install git+https://github.com:skaary/ansible-role-git.git
+```
+
+or
+
+```bash
+ansible-galaxy install git+https://github.com:skaary/ansible-role-git.git,,git
+```
+
+to change the installed role name from _ansible-role-git_ to just _git_.
+
+Alternatively, install the role via a _requirements.yml_ file, e.g. when installing multiple roles at once. See [ansible galaxy documentation](https://galaxy.ansible.com/docs/using/installing.html#installing-multiple-roles-from-a-file) for more information.
+
 ## Role Variables
 
 | Variable name                 | Default value | Description |
@@ -48,7 +70,7 @@ vars:
       user: user
       email: user@email.com
 roles:
-  - git
+  - ansible-role-git
 ```
 
 ### Configure user ~/.config/git/config and ~/.config/git/ignore
@@ -63,7 +85,9 @@ vars:
   gitignore:
     - ".idea"
 roles:
-  - git
+  - ansible-role-git
 ```
 
 ## License
+
+MIT / BSD
