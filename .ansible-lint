@@ -6,3 +6,4 @@ skip_list:
   - 'no-changed-when'
   - 'meta-no-info'
   - 'literal-compare'
+  - 'fqcn-builtins'

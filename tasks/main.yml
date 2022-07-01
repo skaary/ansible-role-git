@@ -3,6 +3,7 @@
   package:
     name: "{{ git_packages }}"
     state: present
+  become: true
 
 - name: ensure git config directory exists
   file:
